@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2025 at 11:50 AM
+-- Generation Time: Jan 10, 2025 at 10:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,20 +64,20 @@ CREATE TABLE `categories` (
   `cat_name` text DEFAULT NULL,
   `cat_image` text DEFAULT NULL,
   `cat_description` text DEFAULT NULL,
-  `cat_status` text NOT NULL
+  `cat_status` text NOT NULL,
+  `cat_icon` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `cat_name`, `cat_image`, `cat_description`, `cat_status`) VALUES
-(1, 'Hotels', 'cat_hotels.jpg', '\"Hotels are giving a chilling ampience to one who visits\"', 'active'),
-(2, 'Resorts', 'cat_resorts.jpg', '\"Resorts are giving a chilling ampience to one who visits\"', 'active'),
-(3, 'Homestays', 'cat_homestays.jpg', '\"Homestays are giving a chilling ampience to one who visits\"', 'active'),
-(4, 'Villas', 'cat_villas.jpg', '\"Villas are giving a chilling ampience to one who visits\"', 'active'),
-(5, 'Farmstays', 'cat_farmstays.jpg', '\"Farmstays are giving a chilling ampience to one who visits\"', 'active'),
-(6, 'Forests', 'cat_forests.jpg', '\"Forests are giving a chilling ampience to one who visits\"', 'active');
+INSERT INTO `categories` (`id`, `cat_name`, `cat_image`, `cat_description`, `cat_status`, `cat_icon`) VALUES
+(1, 'Hotels', 'cat_hotels.jpg', '\"Hotels are giving a chilling ampience to one who visits\"', 'active', 'fas,city'),
+(2, 'Resorts', 'cat_resorts.jpg', '\"Resorts are giving a chilling ampience to one who visits\"', 'active', 'fas,landmark'),
+(3, 'Homestays', 'cat_homestays.jpg', '\"Homestays are giving a chilling ampience to one who visits\"', 'active', 'fas,house'),
+(4, 'Villas', 'cat_villas.jpg', '\"Villas are giving a chilling ampience to one who visits\"', 'active', 'fas,building'),
+(5, 'Farmstays', 'cat_farmstays.jpg', '\"Farmstays are giving a chilling ampience to one who visits\"', 'active', 'fab,pagelines');
 
 -- --------------------------------------------------------
 
@@ -185,7 +185,14 @@ CREATE TABLE `property` (
 --
 
 INSERT INTO `property` (`id`, `cat_id`, `user_id`, `prop_name`, `prop_image`, `status`, `description`, `features`) VALUES
-(1, 1, 1, 'Evid Villa', 'evid_img.jpg', 'active', 'Evid is one of the best experience you can ever have in a 5 star hotels', 'Breakfast, Swimming Pool, A/C');
+(1, 1, 1, 'Evid Villa', 'evid_image.jpg', 'active', 'Evid is one of the best experience you can ever have in a 5 star hotels', 'Breakfast, Swimming Pool, A/C'),
+(2, 1, 1, 'Lacknor', 'lacknor_image.jpg', 'active', 'Lacknor is one of the best experience you can ever have in a 5 star hotels', 'bathroom, A/C'),
+(3, 1, 1, 'Vaga Venn', 'vaga_image.jpg', 'active', 'Vaga will give you  agreat experience of a forest and ambience with cool water', 'Swimming Pool, A/C, Breakfast'),
+(4, 1, 1, 'Jurkovic House', 'jurkov_image.jpg', 'active', 'Jurkovic House is a best elk experience you\'ll ever have in northern region', 'Bathroom , A/C , Forest Area'),
+(5, 1, 1, 'Sunny Hills Cottage', 'sunny_hills_image.jpg', 'active', 'Enjoy the best views of the hills at Sunny Hills Cottage', 'Mountain View, WiFi, Fireplace'),
+(6, 1, 1, 'Lakeview Retreat', 'lakeview_image.jpg', 'active', 'Relax and unwind at Lakeview Retreat with stunning lake views', 'Lake View, Jacuzzi, BBQ Area'),
+(7, 1, 1, 'Greenwood Lodge', 'greenwood_lodge_image.jpg', 'active', 'A peaceful retreat in the heart of a forest at Greenwood Lodge', 'Hiking, Forest Area, A/C'),
+(8, 1, 1, 'Riverside Bungalow', 'riverside_bungalow_image.jpg', 'active', 'Stay at Riverside Bungalow and experience the tranquility of the river', 'River View, Swimming Pool, Garden');
 
 -- --------------------------------------------------------
 
@@ -207,8 +214,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('trMgzpEVBHlprhHtDT5RMsV7AmKN98kHApFhIPus', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieDEzczB6WW9VcEx5NW04aDVtc1pIRU9oMTFCc2lVcFJkUkJMSE9VeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ob3RlbHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1736404392),
-('Y5eVeHGmAfPp73j0oUQaIV66SLJ0i0zBt9GuwQMm', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiazZkYTVCUnU4TmM4Q3QyeUFhVEMza1J4Zm9vTFMxU1lubzR4a2dhNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yaWVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1736413271);
+('FhnpiKWUXr32neuFfHILktPi66PDDZz7wKfaXDbk', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidjZoY0NacXlBb2ZVVzd4SVFhWHBwQUpzNnlEbVNUU2N1b2l4cmlZViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yaWVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1736502207);
 
 -- --------------------------------------------------------
 
@@ -343,7 +349,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
